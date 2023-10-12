@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "sangji-user-application",
-    "slug": "sangji-user-application",
+    "name": "Sangji Application",
+    "slug": "sangji-application",
+    "scheme" : "com.sangji.user",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +26,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
