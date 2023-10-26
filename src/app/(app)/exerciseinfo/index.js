@@ -6,9 +6,11 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { Items } from '../../../components/ExerciseInfo/items';
 import { config } from '../../../../common/config';
 import useDataFetcher from '../../../hooks/useDataFetcher';
+import { useSession } from '../../../../common/ctx';
 
 const styles = StyleSheet.create({
     container : {
+        flex : 1,
         backgroundColor : COLORS.BLUE,
     },
     button_container: {
@@ -33,8 +35,9 @@ const styles = StyleSheet.create({
 });
 
 export default function HomeScreen() {
+    const { signIn, signOut, session } = useSession();
     const [refreshing, setRefreshing] = useState(false);
-    const { data, isLoading, error, refetch} = useDataFetcher(`${config.HOST}/api/musclefunctionlog`);
+    const { data, isLoading, error, refetch} = useDataFetcher(`${config.HOST}/api/musclefunctionlog?username=${session}`);
 
     const renderItem = ({ index, item }) => {
         return (

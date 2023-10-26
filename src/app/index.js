@@ -1,7 +1,6 @@
 import { Link, Redirect, Stack, Tabs } from 'expo-router';
 import { Text, View } from 'react-native';
 import { useSession } from '../../common/ctx';
-import TabNavigation from '../navigations/tabNavigation';
 import HomeScreen from './(app)/exerciseinfo';
 
 export default function AppLayout() {

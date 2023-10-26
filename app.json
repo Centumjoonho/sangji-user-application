@@ -2,7 +2,7 @@
   "expo": {
     "name": "Sangji Application",
     "slug": "sangji-application",
-    "scheme" : "com.sangji.user",
+    "scheme": "com.sangji.user",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,13 +22,22 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.paulahn.sangjiapplication"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
       "expo-router"
-    ]
+    ],
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "239b283e-05a7-43fc-8665-85a263232b5a"
+      }
+    }
   }
 }

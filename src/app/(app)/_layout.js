@@ -1,5 +1,4 @@
 import { Tabs } from 'expo-router';
-import TabNavigation from '../../navigations/tabNavigation';
 import { StatusBar } from 'expo-status-bar';
 import { Image } from 'react-native';
 

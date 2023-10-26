@@ -1,5 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { COLORS } from "../../../common/styles/color";
+import { Badge } from "../Badge";
 
 const styles = StyleSheet.create({
     container : {
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
     },
     typeText : {
         color : COLORS.WHITE,
-        fontSize : 20,
+        fontSize : 22,
     },
     descriptionText : {
         color : COLORS.WHITE,
@@ -35,10 +36,11 @@ export const Items = ({item}) => {
     return (
         <TouchableOpacity 
             style={styles.container}
-        >
-            <Text style={styles.typeText}>{item.user_id}</Text>
-            <Text style={styles.typeText}>{item.exercise_type}</Text>
-            <Text style={styles.dateText}>{item.created_at}</Text>
+        >   
+            <Badge type={item.type} style={{marginBottom : 5}} />
+            <Text style={[styles.typeText, {marginBottom : 5}]}>{item.user_id}</Text>
+            <Text style={[styles.typeText, {marginBottom : 5}]}>{item.exercise_type}</Text>
+            <Text style={styles.dateText}>{item.datetime_str}</Text>
         </TouchableOpacity>
     )
 }

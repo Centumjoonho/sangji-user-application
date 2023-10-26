@@ -10,6 +10,7 @@ import { config } from "../../../common/config";
 import { ExerciseInfoAPI } from "../../../common/api/ApiBase";
 import { integerValidation, notBlankValication, stringValidation } from "../../../common/validation/formValidation";
 import { NormalAlert } from "../Alert/Alert";
+import { useSession } from "../../../common/ctx";
 
 
 const styles = StyleSheet.create({
@@ -64,6 +65,7 @@ export const Form = ({onPressConfirm}) => {
     const [date, setDate] = useState(new Date());
     const [exercise, setExercise] = useState();
     const [repetition, setRepetition] = useState(); 
+    const {session} = useSession();
 
     const fieldsValidations = {
         'date' : [notBlankValication],
@@ -133,6 +135,7 @@ export const Form = ({onPressConfirm}) => {
             fd.append('date', datatimeToISOString(date));
             fd.append('exercise', exercise);
             fd.append('repetition', repetition);
+            fd.append('username', session);
 
             const response = await ExerciseInfoAPI.post(fd, {});  
             

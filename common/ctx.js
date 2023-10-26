@@ -1,5 +1,6 @@
 import React from 'react';
 import { useStorageState } from './useStorageState';
+import { LoginAPI } from './api/ApiBase';
 
 const AuthContext = React.createContext();
 
@@ -21,10 +22,29 @@ export function SessionProvider(props){
     return (
         <AuthContext.Provider
           value={{
-            signIn: (token) => {
-              console.log('signin: =>' + token);
+            signIn: async ({id, password}) => {
+              const fd = new URLSearchParams();
+              fd.append("id", id);
+              fd.append("password", password);
+              
               // Perform sign-in logic here
-              setSession('xxx');
+              try{
+                const req = await LoginAPI.post(fd.toString(), {
+                  "Content-Type": "application/x-www-form-urlencoded",
+                });
+                const result = await req.json();
+
+                if (result.success){
+                  console.log(result);
+                  setSession(result.user);
+                  return true;
+                }
+              }catch(err){
+                console.error(err);
+              }
+
+              return false;
+
             },
             signOut: () => {
               setSession(null);
