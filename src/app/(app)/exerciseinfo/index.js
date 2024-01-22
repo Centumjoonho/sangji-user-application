@@ -9,39 +9,54 @@ import useDataFetcher from '../../../hooks/useDataFetcher';
 import { useSession } from '../../../../common/ctx';
 
 const styles = StyleSheet.create({
-    container : {
-        flex : 1,
-        backgroundColor : COLORS.BLUE,
+    container: {
+        flex: 1,
+        backgroundColor: COLORS.BLUE,
     },
     button_container: {
-        display : 'flex',
-        alignItems : 'flex-end',
-        padding : 10
-    },  
-    button : {
-        justifyContent : 'center',
-        alignItems : 'center',
-        flexDirection : 'row',
-        backgroundColor : COLORS.LETTUCE,
-        borderRadius : 50,
-        paddingVertical : 5,
-        paddingHorizontal : 10
+        display: 'flex',
+        alignItems: 'flex-end',
+        padding: 10
     },
-    buttonText : {
-        fontSize : 16,
-        color : COLORS.WHITE,
-        marginRight : 5
+    button: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
+        backgroundColor: COLORS.LETTUCE,
+        borderRadius: 50,
+        paddingVertical: 5,
+        paddingHorizontal: 10
+    },
+    buttonText: {
+        fontSize: 16,
+        color: COLORS.WHITE,
+        marginRight: 5
     }
 });
 
 export default function HomeScreen() {
     const { signIn, signOut, session } = useSession();
     const [refreshing, setRefreshing] = useState(false);
-    const { data, isLoading, error, refetch} = useDataFetcher(`${config.HOST}/api/musclefunctionlog?username=${session}`);
+    const { data, isLoading, error, refetch } = useDataFetcher(`${config.HOST}/api/musclefunctionlog?username=${session}`);
+
+    useEffect(() => {
+        console.log()
+    })
+    //  item -> values
+    // {"created_at": "2024-01-17T07:52:00",
+    //  "datetime": "2024-01-17T07:52:00", 
+    //  "datetime_str": "2024-01-17 07:52",
+    //  "excericse": "latpulldown",
+    //  "exercise_type": "latpulldown | 100회", 
+    //  "repetition": 100, 
+    //  "type": "outdoor", 
+    //  "user": "null", 
+    //  "user_id": "null"}
 
     const renderItem = ({ index, item }) => {
+        console.log(item)
         return (
-            <Items 
+            <Items
                 item={item}
             />
         )
@@ -71,7 +86,7 @@ export default function HomeScreen() {
             </View>
             <FlatList
                 contentContainerStyle={{
-                    padding : 30
+                    padding: 30
                 }}
                 data={data.result}
                 renderItem={renderItem}
