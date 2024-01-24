@@ -146,9 +146,13 @@ export default function RegisterScreen() {
 
         const result = validate(data);
 
+        console.log(result);
+
         if (!result) return;
 
         fd.append("user", JSON.stringify(data));
+
+        console.log(fd.toString());
 
         try {
             const req = await UserAPI.post(fd.toString(), {

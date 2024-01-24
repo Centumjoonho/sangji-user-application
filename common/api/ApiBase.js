@@ -5,39 +5,43 @@ const url = (path) => {
 }
 
 const UserAPI = {
-    post : (data, headers) => {
+    post: (data, headers) => {
         return fetch(url('/register'), {
-            method : 'POST',
-            body : data,
-            headers : headers
+            method: 'POST',
+            body: data,
+            headers: headers
         });
     }
 }
 
 
 const LoginAPI = {
-    post : (data, headers) => {
+    post: (data, headers) => {
+        console.log(data);
         return fetch(url('/login'), {
-            method : 'POST',
-            body : data,
-            headers : headers
-        });
+            method: 'POST',
+            body: data,
+            headers: headers
+        })
+
+
     }
+
 }
 
 
 const ExerciseInfoAPI = {
-    get : (data, headers) => {
+    get: (data, headers) => {
         return fetch(url('/api/external/log'), {
-            method : 'GET',
-            headers : headers
+            method: 'GET',
+            headers: headers
         })
     },
-    post : (data, headers) => {
+    post: (data, headers) => {
         return fetch(url('/api/external/log'), {
-            method : 'POST',
-            body : data,
-            headers : headers
+            method: 'POST',
+            body: data,
+            headers: headers
         });
     }
 }

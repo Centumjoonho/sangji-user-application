@@ -40,7 +40,8 @@ export default function HomeScreen() {
     const { data, isLoading, error, refetch } = useDataFetcher(`${config.HOST}/api/musclefunctionlog?username=${session}`);
 
     useEffect(() => {
-        console.log()
+        console.log("session : " + session)
+        console.log("mydata : " + JSON.stringify(data))
     })
     //  item -> values
     // {"created_at": "2024-01-17T07:52:00",
@@ -54,7 +55,8 @@ export default function HomeScreen() {
     //  "user_id": "null"}
 
     const renderItem = ({ index, item }) => {
-        console.log(item)
+
+
         return (
             <Items
                 item={item}
