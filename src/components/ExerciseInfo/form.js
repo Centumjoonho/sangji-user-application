@@ -63,13 +63,16 @@ const FIELDS_NAME_MAPPING = {
 
 export const Form = ({ onPressConfirm }) => {
     const [date, setDate] = useState(new Date());
-    const [exercise, setExercise] = useState();
-    const [repetition, setRepetition] = useState();
+    const [exercise, setExercise] = useState('latpulldown');
+    const [repetition, setRepetition] = useState("5");
     const { session } = useSession();
 
     useEffect(() => {
         console.log("세션확인");
         console.log(session);
+        console.log(exercise);
+        console.log(repetition);
+        console.log(date);
     })
 
 
@@ -190,9 +193,9 @@ export const Form = ({ onPressConfirm }) => {
                 </View>
             </View>
             <View style={styles.formContainer}>
-                <Text style={styles.text}>횟수 <RequireAsterisk /></Text>
+                <Text style={styles.text}>운동 횟수 <RequireAsterisk /></Text>
                 <TextInput
-                    placeholder={"운동 횟수"}
+
                     placeholderTextColor={COLORS.WHITE}
                     onChangeText={(value) => setRepetition(value)}
                     value={repetition}
